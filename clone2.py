@@ -4,14 +4,7 @@ client = boto3.client('ec2')
 client = boto3.client('autoscaling')
 client = boto3.client('elbv2')
 security_group = ec2.SecurityGroup('id')
-
-route_table_association = ec2.RouteTableAssociation('id')
 	
-	ec2 = boto3.resource('ec2', aws_access_key_id='A--AR5Q5--JQRP3IV37M',
-	                     aws_secret_access_key='m--xedqF32GsX6--ORsH8px0O3G5ZlreQYNw5QQFm'
-	                     region_name='eu-central-1')
-	
-
 	# create VPC
 	vpc = client.create_vpc(CidrBlock='10.0.0.0/16')
 	# we can assign a name to vpc, or any resource, by using tag
@@ -47,6 +40,13 @@ route_table_association = ec2.RouteTableAssociation('id')
     
 	)
 	print(route_table.id)
+	
+	#association
+	route_table_association = ec2.RouteTableAssociation('id')
+	
+	ec2 = boto3.resource('ec2', aws_access_key_id='A--AR5Q5--JQRP3IV37M',
+	                     aws_secret_access_key='m--xedqF32GsX6--ORsH8px0O3G5ZlreQYNw5QQFm'
+	                     region_name='eu-central-1')
 	
 	# associate the route table with the private subnet
 	route_table.associate_with_subnet(SubnetId=[d,e,f])
