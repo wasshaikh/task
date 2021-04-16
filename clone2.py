@@ -12,7 +12,7 @@ security_group = ec2.SecurityGroup('id')
 	vpc.wait_until_available()
 	print(vpc.id)
 	
-    # create subnet
+    # create subnet.ls
 
     subnet = client.create_subnet(CidrBlock = '10.0.1.0/24', VpcId= vpc.id)
     a = print(subnet.id)
